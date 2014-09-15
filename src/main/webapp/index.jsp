@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Index JsTree Example page</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="themes/default/style.min.css" />
