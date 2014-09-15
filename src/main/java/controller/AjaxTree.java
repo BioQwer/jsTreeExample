@@ -2,7 +2,7 @@ package controller;
 
 import data.Data;
 import data.LocalDataImpl;
-import utils.ConverterJSON;
+import utils.JsonConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,22 +14,20 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = {"/ajax"})
 public class AjaxTree extends HttpServlet {
+
     private Data data;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json; charset=utf-8");
         String nodeId = request.getParameter("id");
-        PrintWriter out = response.getWriter();
-        try{
+        try (PrintWriter out = response.getWriter()) {
             if (nodeId.equals("root"))
-                out.println(ConverterJSON.toJSON_String(data.getRoot()));
+                out.println(JsonConverter.toJson(data.getRoot()));
             else
-                out.println(ConverterJSON.toJSON_String(data.getById(nodeId)));
-        }catch (IOException e)
-        {e.printStackTrace();}
-        finally {
-            out.close();
+                out.println(JsonConverter.toJson(data.getById(nodeId)));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

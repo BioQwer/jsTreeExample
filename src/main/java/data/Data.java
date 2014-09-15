@@ -1,5 +1,7 @@
 package data;
 
+import model.Node;
+
 import java.util.Map;
 
 /**
@@ -7,8 +9,8 @@ import java.util.Map;
  */
 public interface Data {
 
-    public Map getRoot();
+    public Map<String, Node> getRoot();
 
-    public Map getById(String parentId);
+    public Map<String, Node> getById(String parentId);
 
 }

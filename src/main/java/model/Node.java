@@ -29,6 +29,7 @@ public class Node {
                 "id=" + id +
                 ", parent='" + parent + '\'' +
                 ", text='" + text + '\'' +
+                ", children='" + children + '\'' +
                 '}';
     }
 }

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
-public class ConverterJSON {
+public class JsonConverter {
 
-    public static String toJSON_String(Map map) throws JsonProcessingException {
+    public static String toJson(Map map) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(map.values());
     }
