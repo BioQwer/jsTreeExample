@@ -1,1 +1,3 @@
-$(function () { $('#jstree').jstree(); });
+$(function () {
+    $('#jstree').jstree();
+});
