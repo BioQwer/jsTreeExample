@@ -28,18 +28,7 @@
 
     <div class="starter-template">
         <h1>Tree</h1>
-        <div id="jstree">
-            <!-- in this example the tree is populated from inline HTML -->
-            <ul>
-                <li>Root node 1
-                    <ul>
-                        <li id="child_node_1">Child node 1</li>
-                        <li>Child node 2</li>
-                    </ul>
-                </li>
-                <li>Root node 2</li>
-            </ul>
-        </div>
+        <div id="jstree"></div>
     </div>
 
 </div><!-- /.container -->
