@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jsTreeExample:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jsTreeExample-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="jsTreeExample:war exploded" />
+    </root>
+  </artifact>
+</component>

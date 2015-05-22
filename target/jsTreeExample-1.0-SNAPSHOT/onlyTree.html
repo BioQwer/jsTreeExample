@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Только дерево</title>
+    <link rel="stylesheet" href="themes/default/style.min.css" />
+</head>
+<body>
+<!-- Подключаем 2 файла для работы JsTree -->
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jstree.min.js"></script>
+<!-- Плюс необходимые скрипты -->
+<script>
+    $(function () {
+        $('#jstree')
+                .jstree({
+                    "plugins": [ "sort", "json_data" ],
+                    'core': {
+                        'data': {
+                            'url': function (node) {
+                                return node.id === '#' ? 'ajax?id=root' : 'ajax?id=' + node.id;  <!-- Первые адрес указывает откуда получить корень , Второй детей-->
+                            },
+                            'data': function (node) {
+                                return { 'id': node.id };
+                            }
+                        }
+                    }
+                });
+    });
+</script>
+<div id="jstree"></div>  <!-- Контейнер для расположения нашего дерева-->
+</body>
+</html>
