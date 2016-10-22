@@ -1,16 +1,16 @@
 package controller;
 
-import data.Data;
-import data.LocalDataImpl;
-import utils.ConverterJSON;
-
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import data.Data;
+import data.LocalDataImpl;
+import utils.ConverterJSON;
 
 @WebServlet(urlPatterns = {"/ajax"})
 public class AjaxTree extends HttpServlet {
@@ -21,14 +21,15 @@ public class AjaxTree extends HttpServlet {
         response.setContentType("application/json; charset=utf-8");
         String nodeId = request.getParameter("id");
         PrintWriter out = response.getWriter();
-        try{
-            if (nodeId.equals("root"))
-                out.println(ConverterJSON.toJSON_String(data.getRoot()));
-            else
-                out.println(ConverterJSON.toJSON_String(data.getById(nodeId)));
-        }catch (IOException e)
-        {e.printStackTrace();}
-        finally {
+        try {
+            if (nodeId.equals("root")) {
+                out.println(ConverterJSON.toJsonToString(data.getRoot()));
+            } else {
+                out.println(ConverterJSON.toJsonToString(data.getById(nodeId)));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             out.close();
         }
     }

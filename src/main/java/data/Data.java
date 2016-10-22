@@ -1,14 +1,29 @@
 package data;
 
-import java.util.Map;
+import java.util.List;
 
 /**
- * Created by Antony on 15.09.2014.
+ * Interface provide access to tree data.
+ *
+ * @param <T>
+ *         Node type
  */
-public interface Data {
+public interface Data<T> {
 
-    public Map getRoot();
+    /**
+     * Gets root.
+     *
+     * @return the root
+     */
+    public List<T> getRoot();
 
-    public Map getById(String parentId);
+    /**
+     * Gets by id.
+     *
+     * @param parentId
+     *         the parent id
+     * @return the by id
+     */
+    public List<T> getById(String parentId);
 
 }

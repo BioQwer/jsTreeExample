@@ -1,12 +1,13 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.Node;
 
-import java.util.HashMap;
-import java.util.Map;
-//Класс Синглтон
-public class LocalDataImpl implements Data  {
-    public static final int MAX_ELEMENT = 5000;
+public class LocalDataImpl implements Data<Node> {
+
+    public static final int MAX_ELEMENT = 100;
 
     private static LocalDataImpl ourInstance = new LocalDataImpl();
 
@@ -18,24 +19,24 @@ public class LocalDataImpl implements Data  {
     }
 
     @Override
-    public Map getRoot() {         //Получем корень нашего дерева Это будет 10 элементов
-        Map result = new HashMap();
-        for (int i = 1; i < MAX_ELEMENT; i++) {
+    public List<Node> getRoot() {
+        List<Node> nodes = new ArrayList<>(MAX_ELEMENT);
+        for (int i = 0; i < MAX_ELEMENT; i++) {
             Node node = new Node(Integer.toString(i),"#","Node "+i);       //To indicate a node should be a root node set its parent property to "#".
-            result.put(node.getId(),node);
+            nodes.add(node);
         }
-        return result;
+        return nodes;
     }
 
     @Override
-    public Map getById(String parentId) {     //Получем детей нашего дерева Это будет тоже 10 элементов, при этом Если Родитель нечетный то у него не будей
-        Map result = new HashMap();
+    public List<Node> getById(String parentId) {     //Получем детей нашего дерева Это будет тоже 10 элементов, при этом Если Родитель нечетный то у него не будей
+        List<Node> nodes = new ArrayList<>(MAX_ELEMENT);
         if (Integer.parseInt(parentId)%2==0)
-            for (int i = 1; i < MAX_ELEMENT; i++) {
+            for (int i = 0; i < MAX_ELEMENT; i++) {
                 String newId = parentId+Integer.toString(i);
                 Node node = new Node(newId, parentId,"Node "+newId);
-                result.put(node.getId(),node);
+                nodes.add(node);
             }
-        return result;
+        return nodes;
     }
 }
